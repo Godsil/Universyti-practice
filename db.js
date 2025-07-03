@@ -1,19 +1,19 @@
-const mysql = require('mysql2');
+const mysql = require("mysql2");
 
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '16godsi1l03', 
-    database: 'tasks_db',
-    charset: 'utf8mb4'
+  host: "localhost",
+  user: "root",
+  password: "16godsi1l03",
+  database: "world",
+  charset: "utf8mb4",
 });
 
-connection.connect(err => {
-    if (err) {
-        console.error('Œ¯Ë·Í‡ ÔÓ‰ÍÎ˛˜ÂÌËˇ Í ·‡ÁÂ ‰‡ÌÌ˚ı:', err);
-        process.exit(1);
-    }
-    console.log('œÓ‰ÍÎ˛˜ÂÌËÂ Í ·‡ÁÂ ‰‡ÌÌ˚ı ÛÒÔÂ¯ÌÓ ÛÒÚ‡ÌÓ‚ÎÂÌÓ');
+connection.connect((err) => {
+  if (err) {
+    console.error("–û—à–∏–±–∫–∞ –ø–æ–¥–∫–ª—é—á–µ–Ω–∏—è –∫ –±–∞–∑–µ –¥–∞–Ω–Ω—ã—Ö:", err);
+    process.exit(1);
+  }
+  console.log("–ü–æ–¥–∫–ª—é—á–µ–Ω–∏–µ –∫ –±–∞–∑–µ –¥–∞–Ω–Ω—ã—Ö —É—Å–ø–µ—à–Ω–æ —É—Å—Ç–∞–Ω–æ–≤–ª–µ–Ω–æ");
 });
 
 module.exports = connection;
