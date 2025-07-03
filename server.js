@@ -1,34 +1,34 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const connection = require('./db');
+const express = require("express");
+const bodyParser = require("body-parser");
+const connection = require("./db");
 
 const app = express();
 const port = 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static('public')); // для статики (html, css, js)
+app.use(express.static("public")); // РґР»СЏ СЃС‚Р°С‚РёРєРё (html, css, js)
 
-app.get('/tasks', (req, res) => {
-    connection.query('SELECT * FROM tasks', (err, results) => {
-        if (err) return res.status(500).send('Ошибка базы данных');
-        res.json(results);
-    });
+app.get("/tasks", (req, res) => {
+  connection.query("SELECT * FROM tasks", (err, results) => {
+    if (err) return res.status(500).send("РћС€РёР±РєР° Р±Р°Р·С‹ РґР°РЅРЅС‹С…");
+    res.json(results);
+  });
 });
 
-app.post('/tasks', (req, res) => {
-    const description = req.body.description;
-    if (!description) return res.status(400).send('Описание задачи обязательно');
+app.post("/tasks", (req, res) => {
+  const description = req.body.description;
+  if (!description) return res.status(400).send("РћРїРёСЃР°РЅРёРµ Р·Р°РґР°С‡Рё РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ");
 
-    connection.query(
-        'INSERT INTO tasks (description) VALUES (?)',
-        [description],
-        (err, results) => {
-            if (err) return res.status(500).send('Ошибка базы данных');
-            res.redirect('/');
-        }
-    );
+  connection.query(
+    "INSERT INTO tasks (description) VALUES (?)",
+    [description],
+    (err, results) => {
+      if (err) return res.status(500).send("РћС€РёР±РєР° Р±Р°Р·С‹ РґР°РЅРЅС‹С…");
+      res.redirect("/");
+    }
+  );
 });
 
 app.listen(port, () => {
-    console.log(`Сервер запущен на http://localhost:${port}`);
+  console.log(`РЎРµСЂРІРµСЂ Р·Р°РїСѓС‰РµРЅ РЅР° http://localhost:${port}`);
 });

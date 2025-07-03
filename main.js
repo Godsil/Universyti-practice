@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("/tasks")
       .then((res) => res.json())
       .then((tasks) => {
-        // \hello world
         tasksList.innerHTML = "";
         tasks.forEach((task) => {
           const li = document.createElement("li");
@@ -31,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         descriptionInput.value = "";
         loadTasks();
       } else {
-        alert("������ ��� ���������� ������");
+        alert("Ошибка при добавлении задачи");
       }
     });
   });
