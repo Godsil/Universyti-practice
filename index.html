@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <title>Модуль управления задачами</title>
+</head>
+<body>
+    <h1>Список задач</h1>
+    <ul id="tasks"></ul>
+
+    <h2>Добавить задачу</h2>
+    <form id="taskForm" method="POST" action="/tasks">
+        <input type="text" name="description" placeholder="Описание задачи" required />
+        <button type="submit">Добавить</button>
+    </form>
+
+    <script>
+        async function loadTasks() {
+            const response = await fetch('/tasks');
+            const tasks = await response.json();
+            const ul = document.getElementById('tasks');
+            ul.innerHTML = '';
+            tasks.forEach(task => {
+                const li = document.createElement('li');
+                li.textContent = task.description;
+                ul.appendChild(li);
+            });
+        }
+
+        loadTasks();
+    </script>
+</body>
+</html>
